@@ -1,0 +1,56 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // Pastikan ini sesuai dengan versi gradle wrapper Anda
+        classpath 'com.android.tools.build:gradle:7.3.0' 
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    // GANTI 'com.myexample.webtoapk' DENGAN PACKAGE NAME ANDA YANG SEBENARNYA
+    namespace 'com.myexample.webtoapk'
+
+    // Versi Android (Anda dapat menyesuaikannya)
+    compileSdkVersion 33
+    defaultConfig {
+        applicationId "com.myexample.webtoapk"
+        minSdkVersion 24
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        
+        // Menghapus 'testInstrumentationRunner' karena kita tidak menggunakan tes
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    
+    // --- SEMUA BLOK buildTypes, signingConfigs, dan lintOptions DIHAPUS ---
+}
+
+dependencies {
+    // Dependensi minimal untuk WebView dan AppCompat Activity
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.core:core:1.9.0'
+    
+    // implementation 'androidx.constraintlayout:constraintlayout:2.1.4' 
+    // ^ Jika Anda menggunakan ConstraintLayout di activity_main.xml, tambahkan ini
+    
+    // implementation 'org.unifiedpush.android:connector:3.0.10' <--- DIHAPUS
+    // implementation 'androidx.media:media:1.6.0' <--- DIHAPUS
+    // implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.1.0' <--- DIHAPUS
+}
